@@ -8,23 +8,25 @@ namespace MyFirstProjectUwU
 {
     internal class Game
     {
-        private static void Main(string[] args)
+        public static void NewGame()
         {
-    
             Player player1 = new Player();
             Player player2 = new Player();
-            while ( 1 != 2) {
+            bool isGameRunning = true;
+            while (isGameRunning == true) {
                 player1.Score += Dice.RollDice();
                 player2.Score += Dice.RollDice();
-                if (player1.Score >= 50)
-                {
+                if (player1.Score > 50)
                     player1.Score = 25;
-                }
-                if (player2.Score >= 50)
-                {
+                if (player2.Score > 50)
                     player2.Score = 25;
+                if (player1.Score == 50 || player2.Score == 50)
+                {
+                    Console.WriteLine("Partie terminée !");
+                    isGameRunning = false;
                 }
-                Console.WriteLine(player1.Score);
+
+                    Console.WriteLine(player1.Score);
                 Console.WriteLine(player2.Score);
                 Console.ReadLine();
             }
